@@ -44,11 +44,13 @@ jobs:
           ref: ${{ github.ref }}
       - name: Set Git user
         run: |
-          git config user.name acesuu
-          git config user.email ahnafakib@iut-dhaka.edu
+          git config user.name chlorineCtrl
+          git config user.email abirhasan5@iut-dhaka.edu
       - name: Determine default branch
         id: default_branch
         run: echo "::set-output name=branch::$(git rev-parse --abbrev-ref HEAD)"
+      - name: Configure git to use merge by default
+        run: git config pull.rebase false
       - name: Merge changes
         env:
           GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
