@@ -28,7 +28,7 @@ describe("Add", () => {
 // Test suite for 'subtract' function
 describe("Subtract", () => {
   const testData = [
-    [2, 1, 1], // Original test case
+    [3, 2, 1], // Original test case
     [0, 0, 0], // Subtracting zeros
     [-2, -1, -1], // Subtracting negative numbers
     [200, 100, 100], // Subtracting large numbers
