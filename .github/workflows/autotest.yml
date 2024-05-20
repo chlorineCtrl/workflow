@@ -1,9 +1,9 @@
 name: All Tests
 
 on:
-  #   push:
-  #     branches:
-  #       - "*"
+  push:
+    branches:
+      - "*"
   pull_request:
     branches:
       - "*"
@@ -45,8 +45,8 @@ jobs:
         uses: actions/checkout@v2
       - name: Set Git user
         run: |
-          git config user.name acesuu
-          git config user.email ahnafakib@iut-dhaka.edu
+          git config user.name chlorneCtrl
+          git config user.email abirhasan5@iut-dhaka.edu
       - name: Determine default branch
         run: |
           echo "Default branch is $DEFAULT_BRANCH"
