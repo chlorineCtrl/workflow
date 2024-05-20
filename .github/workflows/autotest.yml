@@ -39,27 +39,20 @@ jobs:
   merge:
     runs-on: ubuntu-latest
     needs: integration_tests
-    if: ${{ needs.integration_tests.result == 'success' }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-        with:
-          ref: ${{ github.ref }}
-      - name: Set Git user
+      - name: Set up Git
         run: |
-          git config user.name chlorineCtrl
-          git config user.email abirhasan5@iut-dhaka.edu
-      - name: Determine default branch
-        id: default_branch
-        run: echo "::set-output name=branch::$(git rev-parse --abbrev-ref HEAD)"
+          git config --global user.name "Your Name"
+          git config --global user.email "youremail@example.com"
       - name: Merge changes
-        env:
-          GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
         run: |
-          git remote set-url origin https://x-access-token:${{ secrets.PAT_TOKEN }}@github.com/${{ github.repository }}
-          git checkout ${{ steps.default_branch.outputs.branch }}
-          git pull origin ${{ steps.default_branch.outputs.branch }}
+          git remote set-url origin ***github.com/chlorineCtrl/workflow
+          git remote set-url origin ***github.com/chlorineCtrl/workflow
+          git checkout test-8
+          git pull origin test-8
           git merge --no-ff --allow-unrelated-histories ad0a8e16b3f58ac7f9c883eb250ab48eab37fd90
           git push --force-with-lease origin HEAD
-      - name: Show git status
-        run: git status
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
